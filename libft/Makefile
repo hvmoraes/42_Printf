@@ -5,35 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/18 11:07:37 by hcorrea-          #+#    #+#              #
-#    Updated: 2022/11/02 16:26:22 by hcorrea-         ###   ########.fr        #
+#    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
+#    Updated: 2022/11/02 14:03:01 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC 		= gcc
+NAME		= libft.a
 
-CFLAGS 	= -Wall -Wextra -Werror
+SRC			= 	ft_strlen.c		\
+				ft_putstr.c		\
+				ft_itoa_base.c	\
 
-NAME 	= libftprintf.a
+CC 			= gcc
+CFLAGS		= -Wall -Werror -Wextra -I. -c
 
-SUBDIR 	= src
+RM			= /bin/rm -f
 
-SRC 	= $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.c))
-
-OBJS 	= $(SRC:.c=.o)
-
-$(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
 
 all: 		$(NAME)
 
-clean: 		
-			rm -rf $(OBJS)
+$(NAME):	$(SRC:.c=.o)
+			ar -rcs $(NAME) $(SRC:.c=.o)
 
+.c.o:
+			$(CC) $(CFLAGS) $< -o $(<:.c=.o)
+
+clean:
+			$(RM) $(SRC:.c=.o)
+	
 fclean: 	clean
-			rm -f $(NAME)
-
-re: 		fclean all
-
-make:
-			cd libft && make
+			$(RM) all $(NAME)
+		
+re:			fclean all

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putaddr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:28:55 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 16:22:15 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:59:12 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-#include "../libft/libft.h"
+#include "ft_printf.h"
+#include "libft/libft.h"
 
 void	ft_putaddr(unsigned long addr, t_data *data)
 {

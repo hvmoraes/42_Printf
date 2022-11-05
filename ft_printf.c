@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:21:17 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 16:14:19 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:59:08 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {

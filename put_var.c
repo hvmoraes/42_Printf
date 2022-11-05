@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   put_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:30:33 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 16:24:19 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:17:56 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-#include "../libft/libft.h"
+#include "ft_printf.h"
+#include "libft/libft.h"
 
 int	ft_putvar(va_list ap, const char *text, int i, t_data *data)
 {
@@ -24,7 +24,7 @@ int	ft_putvar(va_list ap, const char *text, int i, t_data *data)
 	else if (text[i] == 37 && text[i + 1] == 's')
 		data->count += ft_putstr(va_arg(ap, char *));
 	else if (text[i] == 37 && text[i + 1] == 'u')
-		ft_putunnbr(va_arg(ap, unsigned int), data);
+		ft_putnnbr(va_arg(ap, unsigned int), data);
 	else if (text[i] == 37 && text[i + 1] == 'x')
 		ft_hexnbr((int)va_arg(ap, int), 'x', data);
 	else if (text[i] == 37 && text[i + 1] == 'X')

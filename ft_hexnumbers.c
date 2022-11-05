@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hexnumbers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:27:33 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 14:31:19 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:59:04 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../ft_printf.h"
+#include "libft/libft.h"
+#include "ft_printf.h"
 
 void	ft_hexnumbers(unsigned long num, char up_down, t_data *data)
 {

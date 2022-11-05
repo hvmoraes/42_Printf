@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putescape.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:32:05 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 16:22:31 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:59:17 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_putescape(const char *text, int pos)
 {

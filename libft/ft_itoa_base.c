@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:03:56 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 14:20:01 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:10:20 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_nbr_len(unsigned long nb, int base)
+int	ft_nbr_len(long nb, int base)
 {
 	int	i;
 
@@ -51,13 +51,11 @@ char	*ft_strdup(char *str)
 
 char	*ft_itoa_base(unsigned long value, int base)
 {
-	int		i;
 	int		s;
 	int		len;
 	char	*radix;
 	char	*result;
 
-	i = 0;
 	s = 0;
 	len = 0;
 	radix = "0123456789ABCDEF";

@@ -1,18 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_put_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 13:20:45 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/04 14:59:14 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 11:17:18 by hcorrea-          #+#    #+#             */
+/*   Updated: 2022/11/22 14:51:50 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	to_hex(unsigned long nbr)
 {
-	write(1, &c, 1);
+	int		len;
+	char	*base;
+
+	len = 0;
+	base = "0123456789abcdef";
+	if (nbr >= 16)
+	{
+		len += to_hex(nbr / 16);
+		len += to_hex(nbr % 16);
+	}
+	else
+		len += write(1, &base[nbr], 1);
+	return (len);
+}
+
+int	ft_put_p(unsigned long nbr)
+{
+	int	len;
+
+	len = 0;
+	if (!nbr)
+	{
+		len += write(1, "(nil)", 5);
+		return (len);
+	}
+	len += write(1, "0x", 2) + to_hex(nbr);
+	return (len);
 }

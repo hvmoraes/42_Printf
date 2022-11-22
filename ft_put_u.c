@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_put_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:25:18 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/02 16:09:09 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 12:05:09 by hcorrea-          #+#    #+#             */
+/*   Updated: 2022/11/22 15:41:28 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_toupper(char *hex_nbr)
+int	ft_put_u(unsigned int nbr)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	if (!hex_nbr)
-		return (NULL);
-	while (hex_nbr[i])
+	len = 0;
+	if (nbr >= 10)
 	{
-		if (hex_nbr[i] > 96 && hex_nbr[i] < 123)
-			hex_nbr[i] -= 32;
-		i++;
+		len += ft_put_u(nbr / 10);
+		len += ft_put_u(nbr % 10);
 	}
-	return (hex_nbr);
+	else
+		len += ft_put_c(nbr + 48);
+	return (len);
 }

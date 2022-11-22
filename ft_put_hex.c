@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putaddr.c                                       :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:28:55 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/04 14:59:12 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 12:12:53 by hcorrea-          #+#    #+#             */
+/*   Updated: 2022/11/22 14:52:15 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-void	ft_putaddr(unsigned long addr, t_data *data)
+int	ft_put_hex(unsigned int nbr, char var)
 {
-	char	*addr_string;
+	int		len;
+	char	*base_lower;
+	char	*base_upper;
 
-	if (addr == 0)
+	len = 0;
+	base_lower = "0123456789abcdef";
+	base_upper = "0123456789ABCDEF";
+	if (nbr >= 16)
 	{
-		write (1, "0x0", 3);
-		data->count += 2;
-		return ;
+		len += ft_put_hex(nbr / 16, var);
+		len += ft_put_hex(nbr % 16, var);
 	}
-	addr_string = ft_itoa_base(addr, 16);
-	data->count += 1 + ft_strlen(addr_string);
-	write (1, "0x", 2);
-	addr_string = ft_tolower(addr_string);
-	ft_putstr(addr_string);
-	free(addr_string);
-	return ;
+	else
+	{
+		if (var == 'x')
+			len += write(1, &base_lower[nbr], 1);
+		else
+			len += write(1, &base_upper[nbr], 1);
+	}
+	return (len);
 }

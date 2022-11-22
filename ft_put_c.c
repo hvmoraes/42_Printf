@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_put_c.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:43:37 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/04 15:14:47 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 09:52:33 by hcorrea-          #+#    #+#             */
+/*   Updated: 2022/11/08 10:38:27 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_put_c(int c)
 {
-	int	i;
-
-	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (5);
-	}
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i - 1);
+	write(1, &c, 1);
+	return (1);
 }

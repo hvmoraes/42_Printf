@@ -5,37 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:21:17 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/04 14:59:08 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 09:33:20 by hcorrea-          #+#    #+#             */
+/*   Updated: 2022/11/22 14:52:52 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *str, ...)
 {
-	int		i;
-	t_data	data;
 	va_list	ap;
+	int		i;
+	int		total_len;
 
+	total_len = 0;
 	i = 0;
-	data.count = 0;
-	if (!format)
-		return (0);
-	va_start(ap, format);
-	while (format[i])
+	va_start(ap, str);
+	while (str && str[i])
 	{
-		if (format[i] == 92)
-			ft_putescape(format, i);
-		else if (format[i] == 37)
+		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
 		{
-			i = ft_putvar(ap, format, i, &data);
+			i++;
+			total_len += ft_var(str[i], ap);
 		}
 		else
-			write(1, &format[i], 1);
+			total_len += ft_put_c(str[i]);
 		i++;
-		data.count++;
 	}
 	va_end(ap);
-	return (data.count);
+	return (total_len);
 }
+
+/*int	main()
+{
+	char *str = "Hello World!";
+	int a = 1; int b = 2; int c = 3;
+	int decimal = 1.23; int decimal2 = 1;
+	
+	(void)str;
+	ft_printf("Without extras.\n");
+	ft_printf("With string: %s\n", str);
+	ft_printf("With character: %c.\n", 'K');
+	ft_printf("With numbers: %ist number, %ind number, \
+	%ird number.\n", a, b, c);
+	printf("With decimal numbers: %d (with commas), \
+	%d (without commas).\n", decimal, decimal2);
+	ft_printf("With pointer: 0 = %p 456 = %p 15 = %p.\n", 0, 456, 15);
+	ft_printf("With percent sign: %%.\n");
+	ft_printf("With hex numbers (lowercase): 123 = %x.\n", 123);
+	ft_printf("With hex numbers (uppercase): 123 = %X.\n", 123);
+	ft_printf("With unsigned int: -1 = %u -9 = %u -123 = %u\n", -1, -9, -123);
+}*/

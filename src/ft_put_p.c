@@ -1,59 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_nbr.c                                       :+:      :+:    :+:   */
+/*   ft_put_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 11:59:21 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/08 16:54:16 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 11:17:18 by hcorrea-          #+#    #+#             */
+/*   Updated: 2023/01/12 11:43:57 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-int	exceptions(int *nb)
+int	to_hex(unsigned long nbr)
 {
-	int	len;
+	int		len;
+	char	*base;
 
 	len = 0;
-	if (*nb < 0)
+	base = "0123456789abcdef";
+	if (nbr >= 16)
 	{
-		ft_put_c('-');
-		*nb *= -1;
-		len++;
-	}	
-	if (*nb == -2147483648)
-	{
-		ft_put_c('2');
-		*nb = 147483648;
-		len++;
+		len += to_hex(nbr / 16);
+		len += to_hex(nbr % 16);
 	}
+	else
+		len += write(1, &base[nbr], 1);
 	return (len);
 }
 
-int	ft_put_nbr(int nb)
+int	ft_put_p(unsigned long nbr)
 {
-	int	size;
-	int	test;
 	int	len;
 
-	size = 1;
 	len = 0;
-	len += exceptions(&nb);
-	test = nb / 10;
-	while (test > 0)
+	if (!nbr)
 	{
-		test = test / 10;
-		size *= 10;
+		len += write(1, "(nil)", 5);
+		return (len);
 	}
-	test = nb;
-	while (size)
-	{
-		ft_put_c((char)((test / size)) + '0');
-		test %= size;
-		size /= 10;
-		len++;
-	}
+	len += write(1, "0x", 2) + to_hex(nbr);
 	return (len);
 }

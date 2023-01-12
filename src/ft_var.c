@@ -6,11 +6,11 @@
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:48:23 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/10 13:11:53 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:44:10 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 int	ft_var(char var, va_list ap)
 {

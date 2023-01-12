@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_p.c                                         :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 11:17:18 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/11/22 14:51:50 by hcorrea-         ###   ########.fr       */
+/*   Created: 2022/11/08 12:12:53 by hcorrea-          #+#    #+#             */
+/*   Updated: 2023/01/12 11:43:32 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-int	to_hex(unsigned long nbr)
+int	ft_put_hex(unsigned int nbr, char var)
 {
 	int		len;
-	char	*base;
+	char	*base_lower;
+	char	*base_upper;
 
 	len = 0;
-	base = "0123456789abcdef";
+	base_lower = "0123456789abcdef";
+	base_upper = "0123456789ABCDEF";
 	if (nbr >= 16)
 	{
-		len += to_hex(nbr / 16);
-		len += to_hex(nbr % 16);
+		len += ft_put_hex(nbr / 16, var);
+		len += ft_put_hex(nbr % 16, var);
 	}
 	else
-		len += write(1, &base[nbr], 1);
-	return (len);
-}
-
-int	ft_put_p(unsigned long nbr)
-{
-	int	len;
-
-	len = 0;
-	if (!nbr)
 	{
-		len += write(1, "(nil)", 5);
-		return (len);
+		if (var == 'x')
+			len += write(1, &base_lower[nbr], 1);
+		else
+			len += write(1, &base_upper[nbr], 1);
 	}
-	len += write(1, "0x", 2) + to_hex(nbr);
 	return (len);
 }

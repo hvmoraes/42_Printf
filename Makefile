@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+         #
+#    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 11:07:37 by hcorrea-          #+#    #+#              #
-#    Updated: 2023/01/12 12:13:30 by hcorrea-         ###   ########.fr        #
+#    Updated: 2023/01/13 11:53:24 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,9 @@ CFLAGS 		=	-Wall -Wextra -Werror -I$(INC_DIR)
 all: 			$(NAME)
 
 $(NAME):		$(OBJ)
-				@echo "$(YELLOW)Compiling...$(END)"
+				@echo "$(YELLOW)Compiling Printf...$(END)"
 				@ar rcs $(NAME) $(OBJ)
-				@echo "$(GREEN)ft_printf succesfully compiled!$(END)"
+				@echo "$(GREEN)Printf succesfully compiled!$(END)"
 
 $(OBJ_DIR)/%.o:	src/%.c | $(OBJF)
 				@$(CC) $(CFLAGS) -c $(^) -o $(@)
@@ -51,10 +51,12 @@ $(OBJF):
 
 clean: 		
 				@rm -rf $(OBJ_DIR)
-				@echo "$(RED)ft_printf objects deleted!$(END)"
+				@echo "$(RED)Printf objects deleted!$(END)"
 
 fclean: 		clean
 				@rm -rf $(NAME)
-				@echo "$(RED)ft_printf lib deleted!$(END)"
+				@echo "$(RED)Printf lib deleted!$(END)"
 
 re: 			fclean all
+
+.PHONY:		all clean fclean re bonus
